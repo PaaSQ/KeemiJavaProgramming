@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<catalog>
+  <info format="1.0">
+    <title>Java Programming</title>
+    <author>
+      <name>René Kollmorgen</name>
+      <email>rene.kollmorgen@keemimobile.com</email>
+    </author>
+    <publisher>
+      <name>www.keemimobile.com</name>
+      <website>www.keemimobile.com</website>
+    </publisher>
+    <cover>
+      <media ref="Cover.png" type="image"/>
+    </cover>
+    <description>Java is a computer programming language that is concurrent, class-based, object-oriented, and specifically designed to have as few implementation dependencies as possible. This KEEMI catalog contains some questions a Java-Programmer should be able to answer.</description>
+    <language>english</language>
+    <version>0.1</version>
+  </info>
+  <questionList>
+    <question type="aggravatedSingleChoice" name="javaStatic">
+      <title>Static Initialization Blocks</title>
+      <text>What is the result?</text>
+      <answer shuffleAnswers="no">
+        <mediaList>
+          <media type="html" ref="javaStatic.html"/>
+        </mediaList>
+        <answerItem correct="no">
+          <text>A) c x y g </text>
+        </answerItem>
+        <answerItem correct="no">
+          <text>B) c g x y  </text>
+        </answerItem>
+        <answerItem correct="no">
+          <text>C) x c y g</text>
+        </answerItem>
+        <answerItem correct="yes" explanation="initializingFields">
+          <text>D) x y c g</text>
+        </answerItem>
+        <answerItem correct="no">
+          <text>E) y x c g</text>
+        </answerItem>
+        <answerItem correct="no">
+          <text>F) y c g x </text>
+        </answerItem>
+      </answer>
+    </question>
+    <!-- java equals-->
+    <question type="aggravatedSingleChoice" name="javaEuals">
+      <title>The Equals Contract</title>
+      <text>What is the result?</text>
+      <answer shuffleAnswers="yes">
+        <mediaList>
+          <media type="html" ref="javaEquals.html"/>
+        </mediaList>
+        <answerItem correct="no">
+          <text>The output is "true" and MyStuff fulfills the Object.equals() contract.</text>
+        </answerItem>
+        <answerItem correct="no">
+          <text>The output is "false" and MyStuff fulfills the Object.equals() contract.</text>
+        </answerItem>
+        <answerItem correct="yes" explanation="equalsHashcode">
+          <text>The output is "true" and MyStuff does NOT fulfill the Object.equals() contract.</text>
+        </answerItem>
+        <answerItem correct="no">
+          <text>The output is "false" and MyStuff does NOT fulfill the Object.equals() contract</text>
+        </answerItem>
+        <answerItem correct="no">
+          <text>Compilation fails</text>
+        </answerItem>
+      </answer>
+    </question>
+    <question name="stringBuilder" type="wordResponse">
+      <title>To which class the following documentation belongs to?</title>
+      <text> ... A mutable sequence of characters. This class provides an API compatible with StringBuffer, but with no guarantee of synchronization. This class is designed for use as a drop-in replacement for StringBuffer in places where the string buffer was being used by a single thread (as is generally the case). Where possible, it is recommended that this class be used in preference to StringBuffer as it will be faster under most implementations. ...</text>
+      <answer>
+        <answerItem correct="yes">
+          <text>StringBuilder</text>
+        </answerItem>
+        <answerItem correct="yes">
+          <text>java.lang.StringBuilder</text>
+        </answerItem>
+      </answer>
+      <resourceList>
+        <resource name="stringBuilder"/>
+      </resourceList>
+    </question>
+    <question name="stringConcat" type="singleChoice">
+      <text>The code below prints "HaHa"?</text>
+      <answer explanation="javaConcat" style="column">
+        <mediaList>
+          <media ref="javaConcat.html" type="html"/>
+        </mediaList>
+        <answerItem correct="no">
+          <text>Yes</text>
+        </answerItem>
+        <answerItem correct="yes">
+          <text>No</text>
+        </answerItem>
+      </answer>
+      <resourceList>
+        <resource name="wideningPrimitiveConversion"/>
+        <resource name="javaConcat"/>
+      </resourceList>
+    </question>
+  </questionList>
+  <explanationList>
+    <explanation name="initializingFields">
+      <title>Initializing Fields</title>
+      <section>
+        <text>Instance variables can be initialized in constructors, where error handling or other logic can be used. To provide the same capability for class variables, the Java programming language includes static initialization blocks.</text>
+        <mediaList>
+          <media ref="javaStaticInitializationBlock.html" type="html"/>
+          <media ref="javaPrivateStaticMethod.html" type="html"/>
+          <media ref="javaInitializationBlock.html" type="html"/>
+        </mediaList>
+        <text>A static initialization block is a normal block of code enclosed in braces, { }, and preceded by the static keyword (See figure 1). A class can have any number of static initialization blocks, and they can appear anywhere in the class body. The runtime system guarantees that static initialization blocks are called in the order that they appear in the source code.</text>
+        <text>There is an alternative to static blocks — you can write a private static method (see figure 2) The advantage of private static methods is that they can be reused later if you need to reinitialize the class variable.</text>
+        <text>Normally, you would put code to initialize an instance variable in a constructor. There are two alternatives to using a constructor to initialize instance variables: initializer blocks and final methods. Initializer blocks for instance variables look just like static initializer blocks, but without the static keyword. The Java compiler copies initializer blocks (see figure 3) into every constructor. Therefore, this approach can be used to share a block of code between multiple constructors.</text>
+      </section>
+    </explanation>
+  </explanationList>
+  <resourceList>
+    <resource name="Puzzlers" type="book">
+      <title>Java Puzzlers: Traps, Pitfalls, and Corner Cases</title>
+      <text>This lively book reveals oddities of the Java programming language through entertaining and thought-provoking programming puzzles.</text>
+      <link>http://www.javapuzzlers.com/</link>
+    </resource>
+    <resource name="stringBuilder" type="website">
+      <title>Class StringBuilder</title>
+      <link>http://docs.oracle.com/javase/7/docs/api/java/lang/StringBuilder.html</link>
+    </resource>
+    <resource name="wideningPrimitiveConversion" type="website">
+      <title>Widening Primitive Conversion</title>
+      <link>http://docs.oracle.com/javase/specs/jls/se5.0/html/conversions.html</link>
+    </resource>
+    <resource name="javaConcat" type="website">
+      <title>Java Puzzlers: Traps, Pitfalls, and Corner Cases</title>
+      <link>http://my.safaribooksonline.com/book/programming/java/032133678x/puzzlers-with-character/ch03lev1sec1</link>
+    </resource>
+  </resourceList>
+  <mediaList>
+    <media type="html" ref="javaStatic.html" large="yes"/>
+    <media type="html" ref="javaEquals.html" large="yes"/>
+    <media ref="javaStaticInitializationBlock.html" type="html" label="Static Initialization Block"
+      showLabelBeforeEvaluated="yes"/>
+    <media ref="javaInitializationBlock.html" type="html" label="Initializer Block"
+      showLabelBeforeEvaluated="yes"/>
+    <media ref="javaPrivateStaticMethod.html" type="html" label="private static method"
+      showLabelBeforeEvaluated="yes"/>
+    <media ref="javaConcat.html" type="html" label="This code prints &quot;HaHa&quot;?"
+      showLabelBeforeEvaluated="yes"/>
+  </mediaList>
+</catalog>
